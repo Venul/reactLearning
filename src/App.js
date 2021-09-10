@@ -1,8 +1,12 @@
 import './App.css';
+import Car from './Car/Car';
 
 function App() {
   return (
-   <h1>Hell world</h1>
+    <div>
+    <h1>Hell world</h1>
+    <Car/>
+   </div>
   );
 }
 
