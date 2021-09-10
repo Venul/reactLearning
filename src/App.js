@@ -4,8 +4,8 @@ import Car from './Car/Car';
 function App() {
   return (
     <div>
-    <h1>Hell world</h1>
-    <Car/>
+      <Car name={'Audi'} year={2018}/>
+      <Car name="Ford" year={2015}/>
    </div>
   );
 }
