@@ -13,14 +13,30 @@ class App extends Component {
     pageTitle: 'Hell world'
   }
 
+  changeTitleHandler = (newTitle) => {
+    this.setState({
+      pageTitle: newTitle
+    });
+  }
+
+
   render() {
+    const divStyle = {
+      textAlign: 'center'
+    }
+
     const cars = this.state.cars;
 
     return (
-      <div>
+      <div style = {divStyle}>
         <h1>{this.state.pageTitle}</h1>
-        <Car name={cars[0].name} year={cars[0].year}/>
-        <Car name={cars[1].name} year={cars[1].year}/>
+
+        <button 
+          onClick={this.changeTitleHandler.bind(this, 'ololo')}
+        >Change title</button>
+
+        <Car name={cars[0].name} year={cars[0].year} onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}/>
+        <Car name={cars[1].name} year={cars[1].year} onChangeTitle={() => this.changeTitleHandler(cars[1].name)}/>
     </div>
     );
   }
