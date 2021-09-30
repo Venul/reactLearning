@@ -10,7 +10,8 @@ class App extends Component {
       {name: 'Ford', year: 2015},
       {name: 'Nissan', year: 2016}
     ],
-    pageTitle: 'Hell world'
+    pageTitle: 'Hell world',
+    showCars: false
   }
 
   changeTitleHandler = (newTitle) => {
@@ -19,10 +20,31 @@ class App extends Component {
     });
   }
 
+  toggleCarHandler = () => {
+    this.setState({
+      showCars: !this.state.showCars
+    });
+  }
 
   render() {
     const divStyle = {
       textAlign: 'center'
+    }
+
+    let cars = null;
+
+    if (this.state.showCars) {
+      cars = this.state.cars.map((car, index) => {
+        return (
+          <Car 
+            key={index}
+            name={car.name}
+            year={car.year}
+            onChangeTitle={ () => this.changeTitleHandler(car.name)
+            }
+          />
+        )
+      })
     }
 
     return (
@@ -30,21 +52,27 @@ class App extends Component {
         <h1>{this.state.pageTitle}</h1>
 
         <button 
-          onClick={this.changeTitleHandler.bind(this, 'ololo')}
-        >Change title</button>
+          onClick={this.toggleCarHandler}
+        >
+          Toggle cars
+        </button>
 
-        { this.state.cars.map((car, index) => {
-          return (
-            <Car 
-              key={index}
-              // key remove error in console (unique elem)
-              name={car.name}
-              year={car.year}
-              onChangeTitle={ () => this.changeTitleHandler(car.name)
-              }
-            />
-          )
-        }) }
+        {cars}
+
+        {/* { this.state.showCars 
+          ? this.state.cars.map((car, index) => {
+              return (
+                <Car 
+                  key={index}
+                  name={car.name}
+                  year={car.year}
+                  onChangeTitle={ () => this.changeTitleHandler(car.name)
+                  }
+                />
+              )
+            }) 
+          : null
+        } */}
     </div>
     );
   }
