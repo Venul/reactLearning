@@ -11,7 +11,7 @@ class App extends Component {
       {name: 'Nissan', year: 2016}
     ],
     pageTitle: 'Hell world',
-    showCars: false
+    showCars: true
   }
 
   changeTitleHandler = (newTitle) => {
@@ -24,6 +24,13 @@ class App extends Component {
     this.setState({
       showCars: !this.state.showCars
     });
+  }
+
+  deleteHandler (index) {
+    const cars = [...this.state.cars]
+    cars.splice(index,1)
+    this.setState({cars})
+    // cars instead cars:cars
   }
 
   render() {
@@ -40,8 +47,8 @@ class App extends Component {
             key={index}
             name={car.name}
             year={car.year}
-            onChangeTitle={ () => this.changeTitleHandler(car.name)
-            }
+            onDelete={ this.deleteHandler.bind(this, index)}
+            // bind need for correct this state
           />
         )
       })
@@ -56,23 +63,7 @@ class App extends Component {
         >
           Toggle cars
         </button>
-
         {cars}
-
-        {/* { this.state.showCars 
-          ? this.state.cars.map((car, index) => {
-              return (
-                <Car 
-                  key={index}
-                  name={car.name}
-                  year={car.year}
-                  onChangeTitle={ () => this.changeTitleHandler(car.name)
-                  }
-                />
-              )
-            }) 
-          : null
-        } */}
     </div>
     );
   }
