@@ -1,12 +1,32 @@
-export default props => (
-  <div style={{
-    border: '1px solid #ccc',
-    marginBottom: '10px',
-    display: 'block',
-    padding: '10px'
-  }}>
-    <h2>Car name: {props.name}</h2>
-    <p>Car year: {props.year}</p>
-    <button onClick={props.onDelete}>Delete</button>
-</div>
-)
+import './Car.css'
+
+export default props => {
+  const inputClasses = ['input']
+
+  // управление классами через добавление стилей в массив, потом join
+
+  if (props.name !== '') {
+    inputClasses.push('green')
+  } else {
+    inputClasses.push('red')
+  }
+
+  if (props.name.length > 4) {
+    inputClasses.push('bold')
+  }
+
+
+  return (
+    <div className='car'>
+      <h2>Car name: {props.name}</h2>
+      <p>Car year: {props.year}</p>
+      <input 
+        type="text" 
+        onChange={props.onChangeName}
+        defaultValue={props.name} 
+        className={inputClasses.join(' ')}
+      />
+      <button onClick={props.onDelete}>Delete</button>
+  </div>
+  )
+}

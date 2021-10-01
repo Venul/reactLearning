@@ -30,7 +30,14 @@ class App extends Component {
     const cars = [...this.state.cars]
     cars.splice(index,1)
     this.setState({cars})
-    // cars instead cars:cars
+  }
+
+  onChangeName(name, index) {
+    const car = this.state.cars[index]
+    car.name = name
+    const cars = [...this.state.cars]
+    cars[index] = car
+    this.setState({cars})
   }
 
   render() {
@@ -48,7 +55,7 @@ class App extends Component {
             name={car.name}
             year={car.year}
             onDelete={ this.deleteHandler.bind(this, index)}
-            // bind need for correct this state
+            onChangeName={event => this.onChangeName(event.target.value, index)}
           />
         )
       })
@@ -63,7 +70,14 @@ class App extends Component {
         >
           Toggle cars
         </button>
-        {cars}
+        <div style={{
+          width: 400,
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          {cars}
+        </div>
+        
     </div>
     );
   }
