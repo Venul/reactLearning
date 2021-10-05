@@ -40,7 +40,17 @@ class App extends Component {
     this.setState({cars})
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+
   render() {
+    console.log('render');
+    
     const divStyle = {
       textAlign: 'center'
     }
