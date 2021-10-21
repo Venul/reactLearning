@@ -1,6 +1,8 @@
+import React, { Component } from 'react'
+import Radium from 'radium'
 import './Car.css'
 
-export default props => {
+const Car = props => {
   const inputClasses = ['input']
 
   // управление классами через добавление стилей в массив, потом join
@@ -15,9 +17,18 @@ export default props => {
     inputClasses.push('bold')
   }
 
+  const style = {
+    border: '1px solid #ccc',
+    boxShadow: '0 4px 5px 0 rgba(0,0,0, .14)',
+    ':hover' : {
+      border: '1px solid #aaa',
+      boxShadow: '0 4px 14px 0 rgba(0,0,0, .25)',
+      cursor: 'pointer'
+    }
+  }
 
   return (
-    <div className='car'>
+    <div className='car' style={style}>
       <h2>Car name: {props.name}</h2>
       <p>Car year: {props.year}</p>
       <input 
@@ -30,3 +41,5 @@ export default props => {
   </div>
   )
 }
+
+export default Radium(Car)

@@ -49,8 +49,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('render');
-    
     const divStyle = {
       textAlign: 'center'
     }
