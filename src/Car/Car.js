@@ -4,10 +4,6 @@ import './Car.css'
 
 class Car extends Component {
   render() {
-
-    if (Math.random() > 0.7) {
-      throw new Error('Magic number error!');
-    }
     const inputClasses = ['input']
 
     if (this.props.name !== '') {
