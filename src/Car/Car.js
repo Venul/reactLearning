@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classes from './Car.css'
+import './Car.css'
 import withClass from '../hoc/withClass'
 
 class Car extends Component {
+  componentDidMount() {
+    if (this.props.index ===1) {
+    this.inputRef.focus()
+  }
+  }
+
   render() {
     const inputClasses = ['input']
 
@@ -22,6 +28,7 @@ class Car extends Component {
         <h2>Car name: {this.props.name}</h2>
         <p>Car year: {this.props.year}</p>
         <input 
+          ref={(inputRef) => this.inputRef = inputRef}
           type="text" 
           onChange={this.props.onChangeName}
           defaultValue={this.props.name} 
@@ -40,4 +47,4 @@ Car.propTypes = {
   onDelete: PropTypes.func
 }
 
-export default withClass(Car, classes.Car)
+export default withClass(Car, 'car')
