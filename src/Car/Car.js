@@ -4,10 +4,16 @@ import './Car.css'
 import withClass from '../hoc/withClass'
 
 class Car extends Component {
+constructor(props) {
+  super(props)
+
+  this.inputRef = React.createRef()
+}
+
   componentDidMount() {
     if (this.props.index ===1) {
-    this.inputRef.focus()
-  }
+      this.inputRef.current.focus()
+    }
   }
 
   render() {
@@ -28,7 +34,7 @@ class Car extends Component {
         <h2>Car name: {this.props.name}</h2>
         <p>Car year: {this.props.year}</p>
         <input 
-          ref={(inputRef) => this.inputRef = inputRef}
+          ref={this.inputRef}
           type="text" 
           onChange={this.props.onChangeName}
           defaultValue={this.props.name} 
