@@ -9,8 +9,8 @@ class App extends Component {
   state = {
     cars: [
       {name: 'Audi', year: 2018},
-      // {name: 'Ford', year: 2015},
-      // {name: 'Nissan', year: 2016}
+      {name: 123, year: '2015'},
+      {name: 'Nissan', year: 2016}
     ],
     pageTitle: 'Hell world',
     showCars: true
