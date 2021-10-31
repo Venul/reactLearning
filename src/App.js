@@ -7,6 +7,7 @@ import Counter from './Counter/Counter';
 class App extends Component {
 
   state = {
+    clicked: false,
     cars: [
       {name: 'Audi', year: 2018},
       {name: 'Ford', year: 2015},
@@ -69,8 +70,8 @@ class App extends Component {
       <div style = {divStyle}>
         <h1>{this.state.pageTitle}</h1>
 
-        <Counter />
-
+        <Counter clicked={this.state.clicked} />
+        <button onClick={()=> this.setState({clicked: true})}>Change clicked</button>
         <button 
           style={{marginTop: 20}}
           onClick={this.toggleCarHandler}
